@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseListComponent } from './course-list.component';
+import { CourseListItemComponent } from '../course-list-item/course-list-item.component';
+import { CourseService } from '../course.service';
 
 describe('CourseListComponent', () => {
   let component: CourseListComponent;
@@ -8,7 +10,7 @@ describe('CourseListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListComponent ]
+      declarations: [ CourseListComponent, CourseListItemComponent ]
     })
     .compileComponents();
   }));
@@ -21,5 +23,17 @@ describe('CourseListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should execute onDelete method', () => {
+    const courseList = new CourseListComponent(new CourseService() );
+    courseList.courseItems = [{
+      id: 1,
+      title: 'Course test',
+      creationDate: '21-10-2019',
+      duration: 150,
+      description: 'Course test'
+    }];
+    expect(courseList.onRootDelete(1)).toEqual();
   });
 });

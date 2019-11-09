@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { CourseSearchComponent } from './course-search.component';
 
 describe('CourseSearchComponent', () => {
@@ -8,6 +8,7 @@ describe('CourseSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:      [ FormsModule ],
       declarations: [ CourseSearchComponent ]
     })
     .compileComponents();
@@ -21,5 +22,10 @@ describe('CourseSearchComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should execute search method', () => {
+    const courseSearch = new CourseSearchComponent();
+    expect(courseSearch.search()).toEqual();
   });
 });
