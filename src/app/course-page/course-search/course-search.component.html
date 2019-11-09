@@ -2,9 +2,9 @@
   <div class="col-10">
     <form class="form-inline">
       <div class="form-group mb-2">
-        <input class="form-control" type="text" placeholder="Search course">
+        <input [(ngModel)]="searchCourse" name="searchCourse" class="form-control" type="text" placeholder="Search course">
       </div>
-      <button type="submit" class="btn btn-primary mb-2">Search</button>
+      <button (click)="search()" type="button" class="btn btn-primary mb-2">Search</button>
     </form>
   </div>
   <div class="col-2">

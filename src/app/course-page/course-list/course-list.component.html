@@ -1,3 +1,3 @@
 <div>
-  <gmp-course-list-item *ngFor="let item of courseItems" [item]="item"></gmp-course-list-item>
+  <gmp-course-list-item (onDeleteCourse)="onRootDelete($event)" *ngFor="let item of courseItems" [item]="item"></gmp-course-list-item>
 </div>
