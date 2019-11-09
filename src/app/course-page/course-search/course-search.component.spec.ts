@@ -23,4 +23,9 @@ describe('CourseSearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should execute search method', () => {
+    const courseSearch = new CourseSearchComponent();
+    expect(courseSearch.search()).toEqual();
+  });
 });
