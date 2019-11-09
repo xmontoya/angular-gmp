@@ -15,6 +15,7 @@ import { CourseSearchComponent } from './course-search/course-search.component';
   ],
   exports: [
     CourseListComponent,
+    CourseListItemComponent,
     CourseSearchComponent,
     FormsModule
   ]
