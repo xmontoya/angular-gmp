@@ -17,4 +17,9 @@ export class CourseListComponent implements OnInit {
     this.courseItems = this.courseService.getItems();
   }
 
+  public onRootDelete(id: number): void {
+    console.log(id);
+    this.courseItems = this.courseItems.filter((item: CourseListItem) => item.id !== id);
+  }
+
 }
