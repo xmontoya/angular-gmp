@@ -30,9 +30,10 @@ describe('CourseListComponent', () => {
     courseList.courseItems = [{
       id: 1,
       title: 'Course test',
-      creationDate: '21-10-2019',
+      creationDate: '2019-10-20',
       duration: 150,
-      description: 'Course test'
+      description: 'Course test',
+      topRated: true
     }];
     expect(courseList.onRootDelete(1)).toEqual();
   });

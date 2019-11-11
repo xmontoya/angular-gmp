@@ -1,8 +1,14 @@
-<div class="card">
+<div class="card border">
     <div class="card-title">
       <div class="row">
-        <div class="col-12">
-          <h5>{{item.title}}</h5>
+        <div class="col-6">
+          <h5>{{ item.title | uppercase }} <i *ngIf="item.topRated" class="far fa-star text-warning"></i></h5>
+        </div>
+        <div class="col-3">
+          <span class="text-center text-muted"><i class="far fa-clock"></i> {{ item.duration }}</span>
+        </div>
+        <div class="col-3">
+          <span class="text-center text-muted"><i class="far fa-calendar"></i> {{ item.creationDate | date }}</span>
         </div>
       </div>
     </div>
