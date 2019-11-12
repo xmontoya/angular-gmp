@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseListItemComponent } from './course-list-item.component';
+import { CourseCardBorderDirective } from '../directives/course-card-border.directive';
+import { CourseDurationPipe } from '../pipes/course-duration.pipe';
 
 
 describe('CourseListItemComponent', () => {
@@ -18,7 +20,7 @@ describe('CourseListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListItemComponent ]
+      declarations: [ CourseListItemComponent, CourseCardBorderDirective, CourseDurationPipe ]
     })
     .compileComponents();
   }));
