@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CourseListItemComponent } from './course-list-item.component';
+import { CourseCardBorderDirective } from '../directives/course-card-border.directive';
+import { CourseDurationPipe } from '../pipes/course-duration.pipe';
 
 
 describe('CourseListItemComponent', () => {
@@ -10,14 +12,15 @@ describe('CourseListItemComponent', () => {
   const item = {
     id: 1,
     title: 'Course test',
-    creationDate: '21-10-2019',
+    creationDate: '2019-10-20',
     duration: 150,
-    description: 'Course test'
+    description: 'Course test',
+    topRated: true
   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListItemComponent ]
+      declarations: [ CourseListItemComponent, CourseCardBorderDirective, CourseDurationPipe ]
     })
     .compileComponents();
   }));

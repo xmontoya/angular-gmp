@@ -13,41 +13,47 @@ export class CourseService {
       {
         id: 1,
         title: 'Course 1',
-        creationDate: '21-10-2019',
+        creationDate: '2019-11-20',
         duration: 150,
-        description: 'Course 1'
+        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        topRated: true
       },
       {
         id: 2,
-        title: 'Course 2',
-        creationDate: '21-10-2019',
-        duration: 150,
-        description: 'Course 2'
+        title: 'course 2',
+        creationDate: '2019-11-10',
+        duration: 50,
+        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        topRated: true
       },
       {
         id: 3,
         title: 'Course 3',
-        creationDate: '21-10-2019',
-        duration: 150,
-        description: 'Course 3'
+        creationDate: '2019-12-03',
+        duration: 80,
+        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        topRated: false
       }, {
         id: 4,
-        title: 'Course 4',
-        creationDate: '21-10-2019',
-        duration: 150,
-        description: 'Course 4'
+        title: 'course 4',
+        creationDate: '2019-08-20',
+        duration: 98,
+        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        topRated: true
       }, {
         id: 5,
         title: 'Course 5',
-        creationDate: '21-10-2019',
+        creationDate: '2019-06-15',
         duration: 150,
-        description: 'Course 5'
+        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        topRated: false
       }, {
         id: 6,
         title: 'Course 6',
-        creationDate: '21-10-2019',
+        creationDate: '2019-08-20',
         duration: 150,
-        description: 'Course 6'
+        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        topRated: true
       }
     ];
   }
