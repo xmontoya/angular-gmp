@@ -4,11 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
 import { CourseSearchComponent } from './course-search/course-search.component';
+import { CourseCardBorderDirective } from './directives/course-card-border.directive';
+import { CourseDurationPipe } from './pipes/course-duration.pipe';
+import { CourseSortPipe } from './pipes/course-sort.pipe';
 
 
 
 @NgModule({
-  declarations: [CourseListComponent, CourseListItemComponent, CourseSearchComponent],
+  declarations: [
+    CourseListComponent, 
+    CourseListItemComponent, 
+    CourseSearchComponent, 
+    CourseCardBorderDirective, 
+    CourseDurationPipe, CourseSortPipe
+  ],
   imports: [
     CommonModule,
     FormsModule
