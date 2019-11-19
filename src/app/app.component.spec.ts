@@ -1,4 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -14,7 +16,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent
-      ],
+      ]
     }).compileComponents();
   }));
 
