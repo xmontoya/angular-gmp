@@ -27,7 +27,8 @@ export class CourseListItemComponent implements OnInit {
   public edit(): void{
     this.onEdit.emit(this.item.id);
   }
-
+  
+  /* istanbul ignore next */
   public open(): void{
     const modalRef = this._modalService.open(CourseModalConfirmComponent);
     

@@ -66,6 +66,11 @@ describe('CourseListComponent', () => {
     expect(courseList.onRootSearch('Course')).toEqual();
   });
 
+  it('should execute onRootSearch method with no results', () => {
+    const courseList = new CourseListComponent(new CourseService() );
+    expect(courseList.onRootSearch('')).toEqual(undefined);
+  });
+
   it('should execute onRootEdit method', () => {
     const courseList = new CourseListComponent(new CourseService() );
     expect(courseList.onRootEdit('abcd1')).toEqual();
