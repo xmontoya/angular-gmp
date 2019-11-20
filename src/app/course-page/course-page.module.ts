@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';

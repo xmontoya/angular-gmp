@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import { CourseListComponent } from './course-list.component';
 import { CourseListItemComponent } from '../course-list-item/course-list-item.component';
-import { CourseService } from '../course.service';
+import { CourseService } from '../../services/course.service';
 import { CourseSearchComponent } from '../course-search/course-search.component';
 import { CourseSortPipe } from '../pipes/course-sort.pipe';
 import { CourseCardBorderDirective } from '../directives/course-card-border.directive';
