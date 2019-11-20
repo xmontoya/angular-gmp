@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseListItem } from './course-list-item-model';
-import { CourseService } from '../course.service';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'gmp-course-list',
@@ -15,17 +15,28 @@ export class CourseListComponent implements OnInit {
   constructor(private courseService: CourseService) { }
 
   ngOnInit() {
-    this.courseItemsInit = this.courseService.getItems();
+    this.courseItemsInit = this.courseService.getList();
     this.courseItems = this.courseItemsInit;
   }
 
-  public onRootDelete(id: number): void {
-    this.courseItems = this.courseItems.filter((item: CourseListItem) => item.id !== id);
-    this.courseItemsInit = this.courseItems;
+  public onRootDelete(id: string): void {
+    this.courseService.removeCourse(id);
+    this.courseItemsInit = this.courseService.getList();
+    this.courseItems = this.courseItemsInit;
   }
 
   public onRootSearch(title: string): void {
-    this.courseItems = this.courseItemsInit.filter((item: CourseListItem) => !item.title.toLowerCase().search(title.toLowerCase()));
+    if(title){
+      this.courseItems = this.courseItemsInit.filter((item: CourseListItem) => !item.title.toLowerCase().search(title.toLowerCase()));
+    } 
+  }
+
+  public onRootEdit(id: string): void {
+    console.log(this.courseService.getCourseById(id));
+  }
+
+  public onRootCreate(courseItem: CourseListItem): void {
+    this.courseService.createCourse(courseItem);
   }
 
 }

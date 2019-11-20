@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { HeaderComponent } from './header.component';
+import { LoginPageComponent } from './login-page.component';
 
 class RouterMock {
   navigateByUrl(url: string) {
@@ -9,26 +10,27 @@ class RouterMock {
   }
   serializeUrl(url: string) {
      return url;
-  } 
+  }
   navigate(urls: []) {
     return urls;
   }
 }
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('LoginPageComponent', () => {
+  let component: LoginPageComponent;
+  let fixture: ComponentFixture<LoginPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
+      imports: [ FormsModule ],
+      declarations: [ LoginPageComponent ],
       providers: [ {provide: Router, useClass: RouterMock} ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(LoginPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -37,11 +39,7 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'Angular GMP'`, () => {
-    expect(component.title).toEqual('Angular GMP');
-  });
-
-  it('should execute logout method', () => {
-    expect(component.logout()).toEqual();
+  it('should execute login method', () => {
+    expect(component.login()).toEqual();
   });
 });

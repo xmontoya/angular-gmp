@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'gmp-header',
@@ -7,10 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   title = 'Angular GMP';
+  userInfo = {};
+  isAuthenticated: boolean = false;
   
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) {
+    this.isAuthenticated = this.authService.isAuthenticated();
+    if( this.isAuthenticated ){
+      this.userInfo = this.authService.getUserInfo();
+    }
+  }
 
   ngOnInit() {
   }
 
+  public logout(): void{
+    this.isAuthenticated = !this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }

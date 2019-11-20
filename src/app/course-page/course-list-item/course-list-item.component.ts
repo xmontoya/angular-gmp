@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CourseListItem } from '../course-list/course-list-item-model';
+import { CourseModalConfirmComponent } from '../course-modal-confirm/course-modal-confirm.component';
 
 @Component({
   selector: 'gmp-course-list-item',
@@ -9,9 +11,11 @@ import { CourseListItem } from '../course-list/course-list-item-model';
 export class CourseListItemComponent implements OnInit {
   @Input() item: CourseListItem;
 
-  @Output('onDeleteCourse') onDelete: EventEmitter<number> = new EventEmitter<number>();
+  @Output('onDeleteCourse') onDelete: EventEmitter<string> = new EventEmitter<string>();
+
+  @Output('onEditCourse') onEdit: EventEmitter<string> = new EventEmitter<string>();
   
-  constructor() { }
+  constructor(private _modalService: NgbModal) { }
 
   ngOnInit() {
   }
@@ -19,4 +23,19 @@ export class CourseListItemComponent implements OnInit {
   public delete(): void{
     this.onDelete.emit(this.item.id);
   }
+
+  public edit(): void{
+    this.onEdit.emit(this.item.id);
+  }
+  
+  /* istanbul ignore next */
+  public open(): void{
+    const modalRef = this._modalService.open(CourseModalConfirmComponent);
+    
+    modalRef.result.then((userResponse) => {
+      if(userResponse) {
+        return this.delete();
+      }
+    });   
+  }     
 }
