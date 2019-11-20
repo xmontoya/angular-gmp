@@ -4,22 +4,33 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
+  isAuth: boolean = false;
 
-  constructor() { }
+  constructor() {
+    this.isAuth = localStorage.getItem('angularGMPToken') ? true : false;
+   }
 
-  login(user: string, pass: string): void {
-    
+  login(user: string, pass: string): boolean {
+    if( !localStorage.getItem('angularGMPToken') ) {
+      localStorage.setItem('angularGMPUserInfo', JSON.stringify({ user: user }));  
+      localStorage.setItem('angularGMPToken', 'AGMPT-123456');
+    }
+
+    return this.isAuth = localStorage.getItem('angularGMPToken') ? true : false; 
   }
 
-  logout(): void {
-
-  }
-
-  isAuthenticated(): boolean {
+  logout(): boolean {
+    localStorage.removeItem('angularGMPToken');
+    localStorage.removeItem('angularGMPUserInfo');
+    this.isAuth = false;
     return true;
   }
 
+  isAuthenticated(): boolean {
+    return this.isAuth;
+  }
+
   getUserInfo(): any {
-    return {};
+    return JSON.parse(localStorage.getItem('angularGMPUserInfo'));
   }
 }

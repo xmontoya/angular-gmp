@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'gmp-login-page',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
+  loginUser: string = '';
+  loginPassword: string = '';
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  public login(): void{
+    this.authService.login(this.loginUser, this.loginPassword);
+    this.router.navigate(['courses']);  
+  }
 }

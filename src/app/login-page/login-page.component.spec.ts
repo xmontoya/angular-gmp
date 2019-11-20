@@ -1,6 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { LoginPageComponent } from './login-page.component';
+
+class RouterMock {
+  navigateByUrl(url: string) {
+    return url;
+  }
+  serializeUrl(url: string) {
+     return url;
+  }
+  navigate(urls: []) {
+    return urls;
+  }
+}
 
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
@@ -8,7 +22,9 @@ describe('LoginPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginPageComponent ]
+      imports: [ FormsModule ],
+      declarations: [ LoginPageComponent ],
+      providers: [ {provide: Router, useClass: RouterMock} ]
     })
     .compileComponents();
   }));
@@ -21,5 +37,9 @@ describe('LoginPageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should execute login method', () => {
+    expect(component.login()).toEqual();
   });
 });
