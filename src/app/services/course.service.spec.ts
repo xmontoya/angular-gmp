@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CourseService } from './course.service';
-import { CourseListItem } from '../course-page/course-list/course-list-item-model'
+import { CourseListItem } from '../course-list-page/course-list/course-list-item-model'
 
 describe('CourseService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

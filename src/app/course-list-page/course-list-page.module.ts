@@ -35,4 +35,4 @@ import { CourseModalConfirmComponent } from './course-modal-confirm/course-modal
   ],
   entryComponents: [CourseModalConfirmComponent]
 })
-export class CoursePageModule { }
+export class CourseListPageModule { }
