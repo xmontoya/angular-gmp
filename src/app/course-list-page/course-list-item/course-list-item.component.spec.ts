@@ -3,7 +3,7 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CourseListItemComponent } from './course-list-item.component';
 import { CourseCardBorderDirective } from '../directives/course-card-border.directive';
-import { ApplicationPipesModule } from '../../pipes/application-pipes.module';
+import { PipesModule } from '../../pipes/pipes.module';
 import { CourseModalConfirmComponent } from '../course-modal-confirm/course-modal-confirm.component'
 
 export class MockNgbModalRef {
@@ -28,7 +28,7 @@ describe('CourseListItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CourseListItemComponent, CourseCardBorderDirective, CourseModalConfirmComponent ],
-      imports: [ NgbModule, ApplicationPipesModule ],
+      imports: [ NgbModule, PipesModule ],
     })
     .compileComponents();
   }));

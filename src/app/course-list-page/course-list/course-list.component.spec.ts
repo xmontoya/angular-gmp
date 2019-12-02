@@ -7,7 +7,7 @@ import { CourseService } from '../../services/course.service';
 import { CourseSearchComponent } from '../course-search/course-search.component';
 import { CourseCardBorderDirective } from '../directives/course-card-border.directive';
 import { CourseListItem } from './course-list-item-model';
-import { ApplicationPipesModule } from '../../pipes/application-pipes.module';
+import { PipesModule } from '../../pipes/pipes.module';
 
 
 describe('CourseListComponent', () => {
@@ -16,7 +16,7 @@ describe('CourseListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ApplicationPipesModule ],
+      imports: [ FormsModule, PipesModule ],
       declarations: [ 
         CourseListComponent, 
         CourseListItemComponent, 

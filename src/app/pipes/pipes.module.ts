@@ -14,4 +14,4 @@ import { CourseSortPipe } from './course-sort.pipe';
     CourseSortPipe
   ]
 })
-export class ApplicationPipesModule { }
+export class PipesModule { }

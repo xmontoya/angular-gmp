@@ -4,7 +4,7 @@ import { CourseAddComponent } from './course-add/course-add.component';
 import { CourseAddDateComponent } from './course-add-date/course-add-date.component';
 import { CourseAddDurationComponent } from './course-add-duration/course-add-duration.component';
 import { CourseAddAuthorComponent } from './course-add-author/course-add-author.component';
-import { ApplicationPipesModule } from '../pipes/application-pipes.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { ApplicationPipesModule } from '../pipes/application-pipes.module';
   ],
   imports: [
     CommonModule,
-    ApplicationPipesModule
+    PipesModule
   ]
 })
 export class CourseAddPageModule { }

@@ -8,7 +8,7 @@ import { CourseListItemComponent } from './course-list-item/course-list-item.com
 import { CourseSearchComponent } from './course-search/course-search.component';
 import { CourseCardBorderDirective } from './directives/course-card-border.directive';
 import { CourseModalConfirmComponent } from './course-modal-confirm/course-modal-confirm.component';
-import { ApplicationPipesModule } from '../pipes/application-pipes.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { ApplicationPipesModule } from '../pipes/application-pipes.module';
     CommonModule,
     FormsModule,
     NgbModule,
-    ApplicationPipesModule
+    PipesModule
   ],
   exports: [
     CourseListComponent,
