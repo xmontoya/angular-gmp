@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CourseListItem } from '../course-list/course-list-item-model';
 import { CourseModalConfirmComponent } from '../course-modal-confirm/course-modal-confirm.component';
@@ -6,7 +6,8 @@ import { CourseModalConfirmComponent } from '../course-modal-confirm/course-moda
 @Component({
   selector: 'gmp-course-list-item',
   templateUrl: './course-list-item.component.html',
-  styleUrls: ['./course-list-item.component.scss']
+  styleUrls: ['./course-list-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseListItemComponent implements OnInit {
   @Input() item: CourseListItem;

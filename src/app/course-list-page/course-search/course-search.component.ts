@@ -1,11 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { v1 as uuid } from 'uuid';
 import { CourseListItem } from '../course-list/course-list-item-model';
 
 @Component({
   selector: 'gmp-course-search',
   templateUrl: './course-search.component.html',
-  styleUrls: ['./course-search.component.scss']
+  styleUrls: ['./course-search.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseSearchComponent implements OnInit {
   searchCourse: '';

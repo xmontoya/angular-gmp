@@ -5,10 +5,9 @@ import { CourseListComponent } from './course-list.component';
 import { CourseListItemComponent } from '../course-list-item/course-list-item.component';
 import { CourseService } from '../../services/course.service';
 import { CourseSearchComponent } from '../course-search/course-search.component';
-import { CourseSortPipe } from '../pipes/course-sort.pipe';
 import { CourseCardBorderDirective } from '../directives/course-card-border.directive';
-import { CourseDurationPipe } from '../pipes/course-duration.pipe';
 import { CourseListItem } from './course-list-item-model';
+import { ApplicationPipesModule } from '../../pipes/application-pipes.module';
 
 
 describe('CourseListComponent', () => {
@@ -17,14 +16,13 @@ describe('CourseListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
+      imports: [ FormsModule, ApplicationPipesModule ],
       declarations: [ 
         CourseListComponent, 
         CourseListItemComponent, 
-        CourseSearchComponent, 
-        CourseSortPipe, 
+        CourseSearchComponent,
         CourseCardBorderDirective,
-        CourseDurationPipe ]
+      ],
     })
     .compileComponents();
   }));
