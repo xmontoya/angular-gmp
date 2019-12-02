@@ -3,5 +3,5 @@
 </div>
 <div class="container">
   <span *ngIf="courseItems.length === 0" class="row text-center">NO COURSES TO SHOW ADD A NEW ONE</span>
-  <gmp-course-list-item (onEditCourse)="onRootEdit($event)" (onDeleteCourse)="onRootDelete($event)" *ngFor="let item of courseItems | courseSort:courseItems" [item]="item"></gmp-course-list-item>
+  <gmp-course-list-item (onEditCourse)="onRootEdit($event)" (onDeleteCourse)="onRootDelete($event)" *ngFor="let item of (courseItems | courseSort)" [item]="item"></gmp-course-list-item>
 </div>
