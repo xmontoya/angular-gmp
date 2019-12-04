@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'gmp-course-add-duration',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course-add-duration.component.scss']
 })
 export class CourseAddDurationComponent implements OnInit {
+  @Input() duration: 0;
+
+  @Output() durationChange = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public setDurationChange(): void{
+    this.durationChange.emit(this.duration);
   }
 
 }

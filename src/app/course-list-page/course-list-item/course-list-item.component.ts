@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CourseListItem } from '../course-list/course-list-item-model';
+import { CourseItem } from '../../models/course-item-model';
 import { CourseModalConfirmComponent } from '../course-modal-confirm/course-modal-confirm.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { CourseModalConfirmComponent } from '../course-modal-confirm/course-moda
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseListItemComponent implements OnInit {
-  @Input() item: CourseListItem;
+  @Input() item: CourseItem;
 
   @Output('onDeleteCourse') onDelete: EventEmitter<string> = new EventEmitter<string>();
 

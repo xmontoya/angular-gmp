@@ -6,7 +6,7 @@ import { CourseListItemComponent } from '../course-list-item/course-list-item.co
 import { CourseService } from '../../services/course.service';
 import { CourseSearchComponent } from '../course-search/course-search.component';
 import { CourseCardBorderDirective } from '../directives/course-card-border.directive';
-import { CourseListItem } from './course-list-item-model';
+import { CourseItem } from '../../models/course-item-model';
 import { PipesModule } from '../../pipes/pipes.module';
 
 
@@ -76,7 +76,7 @@ describe('CourseListComponent', () => {
 
   it('should execute onRootCreate method', () => {
     const courseList = new CourseListComponent(new CourseService() );
-    const courseItem: CourseListItem = {
+    const courseItem: CourseItem = {
       id: 'abcd1',
       title: 'Course test',
       creationDate: '2019-10-20',

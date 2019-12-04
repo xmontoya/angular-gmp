@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CourseService } from './course.service';
-import { CourseListItem } from '../course-list-page/course-list/course-list-item-model'
+import { CourseItem } from '../models/course-item-model'
 
 describe('CourseService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
@@ -17,7 +17,7 @@ describe('CourseService', () => {
   });
 
   it('should execute create method', () => {
-    const courseItem: CourseListItem = {
+    const courseItem: CourseItem = {
       id: 'adecr2',
       title: 'Course X',
       creationDate: '2019-11-20',

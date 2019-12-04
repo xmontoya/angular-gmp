@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CourseListItem } from '../course-list-page/course-list/course-list-item-model';
+import { CourseItem } from '../models/course-item-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
   
-  public courseItems: CourseListItem[] = [];
+  public courseItems: CourseItem[] = [];
 
   constructor() { 
     this.courseItems = [
@@ -58,22 +58,22 @@ export class CourseService {
     ];
   }
 
-  getList(): CourseListItem[] {
+  getList(): CourseItem[] {
     return this.courseItems;
   }
 
-  createCourse(courseItem: CourseListItem): void {
+  createCourse(courseItem: CourseItem): void {
     this.courseItems.push(courseItem);
   }
 
-  getCourseById(id: string): CourseListItem {
-    return this.courseItems.filter((item: CourseListItem) => item.id === id)[0];
+  getCourseById(id: string): CourseItem {
+    return this.courseItems.filter((item: CourseItem) => item.id === id)[0];
   }
 
   updateCourse(): void {}
 
   removeCourse(id: string): void{
-    this.courseItems = this.courseItems.filter((item: CourseListItem) => item.id !== id);
+    this.courseItems = this.courseItems.filter((item: CourseItem) => item.id !== id);
   }
 
 }

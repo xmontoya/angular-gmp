@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'gmp-course-add-date',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course-add-date.component.scss']
 })
 export class CourseAddDateComponent implements OnInit {
+  @Input() date: '';
 
+  @Output() creationDateChange = new EventEmitter<string>();
+  
   constructor() { }
 
   ngOnInit() {
   }
 
+  public setCreationDateChange(): void{
+    this.creationDateChange.emit(this.date);
+  }
 }

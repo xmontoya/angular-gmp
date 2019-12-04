@@ -1,6 +1,6 @@
 <div class="form-row">
   <div class="col-4">
     <label for="courseDate">Date</label>
-    <input name="title" type="text" class="form-control" id="courseDate">
+    <input [(ngModel)]="date" (input)="setCreationDateChange()" name="date" type="text" class="form-control" id="courseDate">
   </div>
 </div>
