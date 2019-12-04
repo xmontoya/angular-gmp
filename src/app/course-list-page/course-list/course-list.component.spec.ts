@@ -10,22 +10,10 @@ import { CourseCardBorderDirective } from '../directives/course-card-border.dire
 import { CourseItem } from '../../models/course-item-model';
 import { PipesModule } from '../../pipes/pipes.module';
 
-
-class RouterMock {
-  navigateByUrl(url: string) {
-    return url;
-  }
-  serializeUrl(url: string) {
-     return url;
-  }
-  navigate(urls: []) {
-    return urls;
-  }
-}
-
 describe('CourseListComponent', () => {
   let component: CourseListComponent;
   let fixture: ComponentFixture<CourseListComponent>;
+  let routerSpy = {navigate: jasmine.createSpy('navigate')};
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -36,7 +24,7 @@ describe('CourseListComponent', () => {
         CourseSearchComponent,
         CourseCardBorderDirective,
       ],
-      providers: [ {provide: Router, useClass: RouterMock} ]
+      providers: [ {provide: Router, useValue: routerSpy} ]
     })
     .compileComponents();
   }));
@@ -86,18 +74,5 @@ describe('CourseListComponent', () => {
 
   it('should execute onRootEdit method', () => {
     expect(component.onRootEdit('abcd1')).toEqual();
-  });
-
-  it('should execute onRootCreate method', () => {
-    const courseItem: CourseItem = {
-      id: 'abcd1',
-      title: 'Course test',
-      creationDate: '2019-10-20',
-      duration: 150,
-      description: 'Course test',
-      authors: 'xmontoya',
-      topRated: true
-    };
-    expect(component.onRootCreate(courseItem)).toEqual();
   });
 });

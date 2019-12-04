@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseSearchComponent implements OnInit {
-  searchCourse: '';
+  @Input() searchCourse: string = '';
 
   @Output('onSearchCourse') onSearch: EventEmitter<string> = new EventEmitter<string>();
 

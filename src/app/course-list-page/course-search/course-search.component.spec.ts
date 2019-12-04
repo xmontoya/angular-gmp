@@ -4,27 +4,16 @@ import { Router } from '@angular/router';
 
 import { CourseSearchComponent } from './course-search.component';
 
-class RouterMock {
-  navigateByUrl(url: string) {
-    return url;
-  }
-  serializeUrl(url: string) {
-     return url;
-  }
-  navigate(urls: []) {
-    return urls;
-  }
-}
-
 describe('CourseSearchComponent', () => {
   let component: CourseSearchComponent;
   let fixture: ComponentFixture<CourseSearchComponent>;
+  let routerSpy = {navigate: jasmine.createSpy('navigate')};
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports:      [ FormsModule ],
       declarations: [ CourseSearchComponent ],
-      providers: [ {provide: Router, useClass: RouterMock} ]
+      providers: [ {provide: Router, useValue: routerSpy} ]
     })
     .compileComponents();
   }));
@@ -43,7 +32,8 @@ describe('CourseSearchComponent', () => {
     expect(component.search()).toEqual();
   });
 
-  it('should execute create method', () => {
-    expect(component.addCourse()).toEqual();
+  it('should execute addCourse method', () => {
+    component.addCourse();
+    expect (routerSpy.navigate).toHaveBeenCalledWith(['course-add']);
   });
 });

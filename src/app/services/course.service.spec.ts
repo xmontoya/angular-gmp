@@ -18,7 +18,7 @@ describe('CourseService', () => {
 
   it('should execute create method', () => {
     const courseItem: CourseItem = {
-      id: 'adecr2',
+      id: 'adecr3',
       title: 'Course X',
       creationDate: '2019-11-20',
       duration: 150,
@@ -28,9 +28,10 @@ describe('CourseService', () => {
     };
     const service: CourseService = TestBed.get(CourseService);
     expect(service.createCourse(courseItem)).toEqual();
+    expect(service.getCourseById('adecr3')).toEqual(courseItem);
   });
 
-  it('should execute create method', () => {
+  it('should execute getCourseById method', () => {
     const service: CourseService = TestBed.get(CourseService);
     expect(service.getCourseById('adecr2')).toEqual(undefined);
   });

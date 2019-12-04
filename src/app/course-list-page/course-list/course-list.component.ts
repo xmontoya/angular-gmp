@@ -34,9 +34,4 @@ export class CourseListComponent implements OnInit {
   public onRootEdit(id: string): void {
     console.log(this.courseService.getCourseById(id));
   }
-
-  public onRootCreate(courseItem: CourseItem): void {
-    this.courseService.createCourse(courseItem);
-  }
-
 }

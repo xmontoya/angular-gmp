@@ -19,12 +19,13 @@ class RouterMock {
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
   let fixture: ComponentFixture<LoginPageComponent>;
+  let routerSpy = {navigate: jasmine.createSpy('navigate')};
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
       declarations: [ LoginPageComponent ],
-      providers: [ {provide: Router, useClass: RouterMock} ]
+      providers: [ {provide: Router, useValue: routerSpy} ]
     })
     .compileComponents();
   }));
@@ -40,6 +41,7 @@ describe('LoginPageComponent', () => {
   });
 
   it('should execute login method', () => {
-    expect(component.login()).toEqual();
+    component.login();
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['courses']);
   });
 });

@@ -8,21 +8,10 @@ import { CourseAddDurationComponent } from '../course-add-duration/course-add-du
 import { CourseAddAuthorComponent } from '../course-add-author/course-add-author.component';
 import { PipesModule } from '../../pipes/pipes.module';
 
-class RouterMock {
-  navigateByUrl(url: string) {
-    return url;
-  }
-  serializeUrl(url: string) {
-     return url;
-  }
-  navigate(urls: ['courses']) {
-    return urls;
-  }
-}
-
 describe('CourseAddComponent', () => {
   let component: CourseAddComponent;
   let fixture: ComponentFixture<CourseAddComponent>;
+  let routerSpy = {navigate: jasmine.createSpy('navigate')};
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -36,7 +25,7 @@ describe('CourseAddComponent', () => {
         FormsModule, 
         PipesModule
        ],
-       providers: [ {provide: Router, useClass: RouterMock} ]
+       providers: [ {provide: Router, useValue: routerSpy} ]
     })
     .compileComponents();
   }));
@@ -76,6 +65,7 @@ describe('CourseAddComponent', () => {
       authors: 'developer',
       topRated: false
     };
-    expect(component.create()).toEqual();
+    component.create();
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['courses']);
   });
 });
