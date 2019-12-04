@@ -1,30 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { CourseListComponent } from './course-list.component';
 import { CourseListItemComponent } from '../course-list-item/course-list-item.component';
 import { CourseService } from '../../services/course.service';
 import { CourseSearchComponent } from '../course-search/course-search.component';
-import { CourseSortPipe } from '../pipes/course-sort.pipe';
 import { CourseCardBorderDirective } from '../directives/course-card-border.directive';
-import { CourseDurationPipe } from '../pipes/course-duration.pipe';
-import { CourseListItem } from './course-list-item-model';
-
+import { CourseItem } from '../../models/course-item-model';
+import { PipesModule } from '../../pipes/pipes.module';
 
 describe('CourseListComponent', () => {
   let component: CourseListComponent;
   let fixture: ComponentFixture<CourseListComponent>;
+  let routerSpy = {navigate: jasmine.createSpy('navigate')};
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
+      imports: [ FormsModule, PipesModule ],
       declarations: [ 
         CourseListComponent, 
         CourseListItemComponent, 
-        CourseSearchComponent, 
-        CourseSortPipe, 
+        CourseSearchComponent,
         CourseCardBorderDirective,
-        CourseDurationPipe ]
+      ],
+      providers: [ {provide: Router, useValue: routerSpy} ]
     })
     .compileComponents();
   }));
@@ -47,6 +47,7 @@ describe('CourseListComponent', () => {
       creationDate: '2019-10-20',
       duration: 150,
       description: 'Course test',
+      authors: 'xmontoya',
       topRated: true
     }];
     expect(courseList.onRootDelete('abcd1')).toEqual();
@@ -60,6 +61,7 @@ describe('CourseListComponent', () => {
       creationDate: '2019-10-20',
       duration: 150,
       description: 'Course test',
+      authors: 'xmontoya',
       topRated: true
     }];
     courseList.courseItemsInit = courseList.courseItems;
@@ -67,25 +69,10 @@ describe('CourseListComponent', () => {
   });
 
   it('should execute onRootSearch method with no results', () => {
-    const courseList = new CourseListComponent(new CourseService() );
-    expect(courseList.onRootSearch('')).toEqual(undefined);
+   expect(component.onRootSearch('')).toEqual(undefined);
   });
 
   it('should execute onRootEdit method', () => {
-    const courseList = new CourseListComponent(new CourseService() );
-    expect(courseList.onRootEdit('abcd1')).toEqual();
-  });
-
-  it('should execute onRootCreate method', () => {
-    const courseList = new CourseListComponent(new CourseService() );
-    const courseItem: CourseListItem = {
-      id: 'abcd1',
-      title: 'Course test',
-      creationDate: '2019-10-20',
-      duration: 150,
-      description: 'Course test',
-      topRated: true
-    };
-    expect(courseList.onRootCreate(courseItem)).toEqual();
+    expect(component.onRootEdit('abcd1')).toEqual();
   });
 });

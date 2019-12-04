@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { CoursePageModule } from './course-page/course-page.module';
+import { CourseListPageModule } from './course-list-page/course-list-page.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,7 +12,7 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         CoreModule,
-        CoursePageModule
+        CourseListPageModule
       ],
       declarations: [
         AppComponent

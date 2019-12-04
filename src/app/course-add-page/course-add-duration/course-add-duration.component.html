@@ -1,0 +1,9 @@
+<div class="form-row">
+  <div class="col-4">
+    <label for="courseDuration">Duration</label>
+    <input [(ngModel)]="duration" (input)="setDurationChange()" name="duration" type="text" class="form-control" id="courseDuration">
+  </div>
+  <div class="col-3">
+      <span class="text-center text-muted"><i class="far fa-clock"></i> {{ duration | courseDuration }}</span>
+  </div>
+</div>

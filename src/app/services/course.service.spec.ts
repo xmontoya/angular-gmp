@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CourseService } from './course.service';
-import { CourseListItem } from '../course-page/course-list/course-list-item-model'
+import { CourseItem } from '../models/course-item-model'
 
 describe('CourseService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
@@ -17,19 +17,21 @@ describe('CourseService', () => {
   });
 
   it('should execute create method', () => {
-    const courseItem: CourseListItem = {
-      id: 'adecr2',
+    const courseItem: CourseItem = {
+      id: 'adecr3',
       title: 'Course X',
       creationDate: '2019-11-20',
       duration: 150,
       description: 'Does your lorem ipsum text long for something a little meatier?',
+      authors: 'xmontoya',
       topRated: false
     };
     const service: CourseService = TestBed.get(CourseService);
     expect(service.createCourse(courseItem)).toEqual();
+    expect(service.getCourseById('adecr3')).toEqual(courseItem);
   });
 
-  it('should execute create method', () => {
+  it('should execute getCourseById method', () => {
     const service: CourseService = TestBed.get(CourseService);
     expect(service.getCourseById('adecr2')).toEqual(undefined);
   });

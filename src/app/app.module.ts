@@ -5,18 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageModule } from './login-page/login-page.module';
 import { CoreModule } from './core/core.module';
-import { CoursePageModule } from './course-page/course-page.module';
+import { CourseListPageModule } from './course-list-page/course-list-page.module';
+import { CourseAddPageModule } from './course-add-page/course-add-page.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LoginPageModule,
     CoreModule,
-    CoursePageModule
+    CourseListPageModule,
+    CourseAddPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

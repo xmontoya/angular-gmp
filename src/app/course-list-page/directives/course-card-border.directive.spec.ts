@@ -1,5 +1,4 @@
 import { CourseCardBorderDirective } from './course-card-border.directive';
-import { async, TestBed } from '@angular/core/testing';
 import { Renderer2 } from '@angular/core';
 
 describe('CourseCardBorderDirective', () => {

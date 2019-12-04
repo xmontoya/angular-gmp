@@ -1,15 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { CourseSearchComponent } from './course-search.component';
 
 describe('CourseSearchComponent', () => {
   let component: CourseSearchComponent;
   let fixture: ComponentFixture<CourseSearchComponent>;
+  let routerSpy = {navigate: jasmine.createSpy('navigate')};
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports:      [ FormsModule ],
-      declarations: [ CourseSearchComponent ]
+      declarations: [ CourseSearchComponent ],
+      providers: [ {provide: Router, useValue: routerSpy} ]
     })
     .compileComponents();
   }));
@@ -25,12 +29,11 @@ describe('CourseSearchComponent', () => {
   });
 
   it('should execute search method', () => {
-    const courseSearch = new CourseSearchComponent();
-    expect(courseSearch.search()).toEqual();
+    expect(component.search()).toEqual();
   });
 
-  it('should execute create method', () => {
-    const courseSearch = new CourseSearchComponent();
-    expect(courseSearch.create()).toEqual();
+  it('should execute addCourse method', () => {
+    component.addCourse();
+    expect (routerSpy.navigate).toHaveBeenCalledWith(['course-add']);
   });
 });

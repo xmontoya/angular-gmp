@@ -3,7 +3,7 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CourseListItemComponent } from './course-list-item.component';
 import { CourseCardBorderDirective } from '../directives/course-card-border.directive';
-import { CourseDurationPipe } from '../pipes/course-duration.pipe';
+import { PipesModule } from '../../pipes/pipes.module';
 import { CourseModalConfirmComponent } from '../course-modal-confirm/course-modal-confirm.component'
 
 export class MockNgbModalRef {
@@ -22,13 +22,14 @@ describe('CourseListItemComponent', () => {
     creationDate: '2019-10-20',
     duration: 150,
     description: 'Course test',
+    authors: 'xmontoya',
     topRated: true
   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListItemComponent, CourseCardBorderDirective, CourseDurationPipe, CourseModalConfirmComponent ],
-      imports: [ NgbModule ],
+      declarations: [ CourseListItemComponent, CourseCardBorderDirective, CourseModalConfirmComponent ],
+      imports: [ NgbModule, PipesModule ],
     })
     .compileComponents();
   }));

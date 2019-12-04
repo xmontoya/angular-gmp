@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   title = 'Angular GMP';
-  userInfo = {};
+  userInfo = { user: '' };
   isAuthenticated: boolean = false;
   
   constructor(private authService: AuthService, private router: Router) {

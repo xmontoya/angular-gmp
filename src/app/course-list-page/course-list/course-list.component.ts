@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseListItem } from './course-list-item-model';
+import { CourseItem } from '../../models/course-item-model';
 import { CourseService } from '../../services/course.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { CourseService } from '../../services/course.service';
 })
 export class CourseListComponent implements OnInit {
 
-  public courseItems: CourseListItem[] = [];
-  public courseItemsInit: CourseListItem[] = [];
+  public courseItems: CourseItem[] = [];
+  public courseItemsInit: CourseItem[] = [];
 
   constructor(private courseService: CourseService) { }
 
@@ -27,16 +27,11 @@ export class CourseListComponent implements OnInit {
 
   public onRootSearch(title: string): void {
     if(title){
-      this.courseItems = this.courseItemsInit.filter((item: CourseListItem) => !item.title.toLowerCase().search(title.toLowerCase()));
+      this.courseItems = this.courseItemsInit.filter((item: CourseItem) => !item.title.toLowerCase().search(title.toLowerCase()));
     } 
   }
 
   public onRootEdit(id: string): void {
     console.log(this.courseService.getCourseById(id));
   }
-
-  public onRootCreate(courseItem: CourseListItem): void {
-    this.courseService.createCourse(courseItem);
-  }
-
 }
