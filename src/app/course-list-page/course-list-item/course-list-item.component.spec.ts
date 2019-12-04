@@ -22,6 +22,7 @@ describe('CourseListItemComponent', () => {
     creationDate: '2019-10-20',
     duration: 150,
     description: 'Course test',
+    authors: 'xmontoya',
     topRated: true
   };
 

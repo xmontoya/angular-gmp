@@ -23,6 +23,7 @@ describe('CourseService', () => {
       creationDate: '2019-11-20',
       duration: 150,
       description: 'Does your lorem ipsum text long for something a little meatier?',
+      authors: 'xmontoya',
       topRated: false
     };
     const service: CourseService = TestBed.get(CourseService);

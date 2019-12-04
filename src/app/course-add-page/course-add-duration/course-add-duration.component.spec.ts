@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { CourseAddDurationComponent } from './course-add-duration.component';
 import { PipesModule } from '../../pipes/pipes.module';
@@ -13,6 +14,7 @@ describe('CourseAddDurationComponent', () => {
         CourseAddDurationComponent
       ],
       imports: [
+        FormsModule, 
         PipesModule
       ]
     })

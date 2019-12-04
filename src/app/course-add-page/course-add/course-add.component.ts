@@ -18,6 +18,7 @@ export class CourseAddComponent implements OnInit {
     creationDate: '',
     duration: 0,
     description: '',
+    authors: '',
     topRated: false
   };
   

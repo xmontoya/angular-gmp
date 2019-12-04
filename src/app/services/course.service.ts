@@ -16,6 +16,7 @@ export class CourseService {
         creationDate: '2019-11-20',
         duration: 150,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        authors: 'xmontoya',
         topRated: true
       },
       {
@@ -24,14 +25,16 @@ export class CourseService {
         creationDate: '2019-11-10',
         duration: 50,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        authors: 'xmontoya',
         topRated: true
       },
       {
         id: 'abcd3',
         title: 'Course 3',
-        creationDate: '2019-12-03',
+        creationDate: '2025-12-03',
         duration: 80,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        authors: 'xmontoya',
         topRated: false
       }, {
         id: 'abcd4',
@@ -39,6 +42,7 @@ export class CourseService {
         creationDate: '2019-08-20',
         duration: 98,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        authors: 'xmontoya',
         topRated: true
       }, {
         id: 'abcd5',
@@ -46,13 +50,15 @@ export class CourseService {
         creationDate: '2019-06-15',
         duration: 150,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        authors: 'xmontoya',
         topRated: false
       }, {
         id: 'abcd6',
         title: 'Course 6',
-        creationDate: '2019-08-20',
+        creationDate: '2019-12-03',
         duration: 150,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
+        authors: 'xmontoya',
         topRated: true
       }
     ];
