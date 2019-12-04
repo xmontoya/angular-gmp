@@ -24,4 +24,8 @@ describe('CourseAddAuthorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should execute setAuthorsChange method', () => {
+    expect(component.setAuthorsChange()).toEqual();
+  });
 });

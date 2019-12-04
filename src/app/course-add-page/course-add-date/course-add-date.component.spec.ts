@@ -24,4 +24,8 @@ describe('CourseAddDateComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should execute setCreationDateChange method', () => {
+    expect(component.setCreationDateChange()).toEqual();
+  });
 });

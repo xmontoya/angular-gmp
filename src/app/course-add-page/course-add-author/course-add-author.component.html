@@ -1,4 +1,4 @@
 <div class="form-group">
   <label for="courseAuthors">Authors</label>
-  <input name="title" type="text" class="form-control" id="courseAuthors">
+  <input [(ngModel)]="authors" (input)="setAuthorsChange()" name="authors" type="text" class="form-control" id="courseAuthors">
 </div>

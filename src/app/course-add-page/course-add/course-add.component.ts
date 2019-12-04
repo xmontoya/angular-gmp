@@ -42,4 +42,8 @@ export class CourseAddComponent implements OnInit {
     this.item.creationDate = creationDate;
   }
 
+  public onAuthorsChange(authors: string): void {
+    this.item.authors = authors;
+  }
+
 }

@@ -30,4 +30,8 @@ describe('CourseAddDurationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should execute setDurationChange method', () => {
+    expect(component.setDurationChange()).toEqual();
+  });
 });

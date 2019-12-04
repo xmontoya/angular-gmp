@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./course-add-duration.component.scss']
 })
 export class CourseAddDurationComponent implements OnInit {
-  @Input() duration: 0;
+  @Input() duration: number = 0;
 
   @Output() durationChange = new EventEmitter<number>();
 

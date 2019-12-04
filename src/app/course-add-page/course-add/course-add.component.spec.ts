@@ -15,7 +15,7 @@ class RouterMock {
   serializeUrl(url: string) {
      return url;
   }
-  navigate(urls: []) {
+  navigate(urls: ['courses']) {
     return urls;
   }
 }
@@ -49,5 +49,33 @@ describe('CourseAddComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should execute onDurationChange method', () => {
+    component.onDurationChange(123)
+    expect(component.item.duration).toEqual(123);
+  });
+
+  it('should execute onDateChange method', () => {
+    component.onDateChange('2020-01-03')
+    expect(component.item.creationDate).toEqual('2020-01-03');
+  });
+
+  it('should execute onAuthorsChange method', () => {
+    component.onAuthorsChange('developer')
+    expect(component.item.authors).toEqual('developer');
+  });
+
+  it('should execute create method', () => {
+    component.item = {
+      id: '',
+      title: 'Course X',
+      creationDate: '2019-11-20',
+      duration: 150,
+      description: 'Does your lorem ipsum text long for something a little meatier?',
+      authors: 'developer',
+      topRated: false
+    };
+    expect(component.create()).toEqual();
   });
 });

@@ -13,7 +13,7 @@
         </div>
         <gmp-course-add-date [date]="item.creationDate" (creationDateChange)="onDateChange($event)"></gmp-course-add-date>
         <gmp-course-add-duration [duration]="item.duration" (durationChange)="onDurationChange($event)"></gmp-course-add-duration>
-        <gmp-course-add-author></gmp-course-add-author>
+        <gmp-course-add-author [authors]="item.authors" (authorsChange)="onAuthorsChange($event)"></gmp-course-add-author>
         <div class="form-group">
           <div class="form-check">
             <input [(ngModel)]="item.topRated" name="topRated" class="form-check-input" type="checkbox" id="CourseTopRated">

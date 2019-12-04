@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./course-add-date.component.scss']
 })
 export class CourseAddDateComponent implements OnInit {
-  @Input() date: '';
+  @Input() date: string = '';
 
   @Output() creationDateChange = new EventEmitter<string>();
   
