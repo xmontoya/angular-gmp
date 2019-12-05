@@ -31,8 +31,8 @@ describe('CourseService', () => {
     expect(service.getCourseById('adecr3')).toEqual(courseItem);
   });
 
-  it('should execute getCourseById method', () => {
+  it('should execute getCourseById method for a non existing item', () => {
     const service: CourseService = TestBed.get(CourseService);
-    expect(service.getCourseById('adecr2')).toEqual(undefined);
+    expect(service.getCourseById('adecr2')).toEqual(null);
   });
 });
