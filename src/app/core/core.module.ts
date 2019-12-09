@@ -15,7 +15,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   exports: [
     HeaderComponent,
     BreadcrumbComponent,
-    FooterComponent
+    FooterComponent,
+    PageNotFoundComponent
   ]
 })
 export class CoreModule { }

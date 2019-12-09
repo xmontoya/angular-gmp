@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { CourseListPageModule } from '../course-list-page.module';
+
 import { CourseListComponent } from './course-list.component';
 import { CourseListItemComponent } from '../course-list-item/course-list-item.component';
 import { CourseService } from '../../services/course.service';
@@ -23,6 +25,7 @@ describe('CourseListComponent', () => {
         CourseListItemComponent, 
         CourseSearchComponent,
         CourseCardBorderDirective,
+        CourseListPageModule
       ],
       providers: [ {provide: Router, useValue: routerSpy} ]
     })
@@ -72,7 +75,4 @@ describe('CourseListComponent', () => {
    expect(component.onRootSearch('')).toEqual(undefined);
   });
 
-  it('should execute onRootEdit method', () => {
-    expect(component.onRootEdit('abcd1')).toEqual();
-  });
 });

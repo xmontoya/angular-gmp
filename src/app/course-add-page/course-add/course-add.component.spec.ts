@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { CoreModule  } from '../../core/core.module';
 import { CourseAddComponent } from './course-add.component';
 import { CourseAddDateComponent } from '../course-add-date/course-add-date.component';
 import { CourseAddDurationComponent } from '../course-add-duration/course-add-duration.component';
@@ -23,7 +24,8 @@ describe('CourseAddComponent', () => {
        ],
        imports: [
         FormsModule, 
-        PipesModule
+        PipesModule,
+        CoreModule
        ],
        providers: [ {provide: Router, useValue: routerSpy} ]
     })

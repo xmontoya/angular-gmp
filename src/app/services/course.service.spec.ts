@@ -13,7 +13,17 @@ describe('CourseService', () => {
 
   it('should execute update method', () => {
     const service: CourseService = TestBed.get(CourseService);
-    expect(service.updateCourse()).toEqual();
+    const courseItem: CourseItem = {
+      id: 'abcd6',
+      title: 'Course X',
+      creationDate: '2019-11-20',
+      duration: 150,
+      description: 'Does your lorem ipsum text long for something a little meatier?',
+      authors: 'xmontoya',
+      topRated: false
+    };
+
+    expect(service.updateCourse(courseItem)).toEqual();
   });
 
   it('should execute create method', () => {
