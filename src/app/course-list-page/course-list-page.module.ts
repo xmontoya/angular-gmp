@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { CoreModule } from '../core/core.module';
+
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseListItemComponent } from './course-list-item/course-list-item.component';
 import { CourseSearchComponent } from './course-search/course-search.component';
@@ -22,7 +24,8 @@ import { PipesModule } from '../pipes/pipes.module';
     CommonModule,
     FormsModule,
     NgbModule,
-    PipesModule
+    PipesModule,
+    CoreModule
   ],
   exports: [
     CourseListComponent,

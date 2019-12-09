@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { CoreModule  } from '../core/core.module';
+
 import { LoginPageComponent } from './login-page.component';
 
 class RouterMock {
@@ -23,7 +25,7 @@ describe('LoginPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
+      imports: [ FormsModule, CoreModule ],
       declarations: [ LoginPageComponent ],
       providers: [ {provide: Router, useValue: routerSpy} ]
     })

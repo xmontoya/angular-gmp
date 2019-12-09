@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CourseItem } from '../../models/course-item-model';
 import { CourseModalConfirmComponent } from '../course-modal-confirm/course-modal-confirm.component';
@@ -13,10 +14,8 @@ export class CourseListItemComponent implements OnInit {
   @Input() item: CourseItem;
 
   @Output('onDeleteCourse') onDelete: EventEmitter<string> = new EventEmitter<string>();
-
-  @Output('onEditCourse') onEdit: EventEmitter<string> = new EventEmitter<string>();
   
-  constructor(private _modalService: NgbModal) { }
+  constructor(private _modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,7 +25,7 @@ export class CourseListItemComponent implements OnInit {
   }
 
   public edit(): void{
-    this.onEdit.emit(this.item.id);
+    this.router.navigate(['courses/'+this.item.id]);
   }
   
   /* istanbul ignore next */

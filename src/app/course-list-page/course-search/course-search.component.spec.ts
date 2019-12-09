@@ -34,6 +34,6 @@ describe('CourseSearchComponent', () => {
 
   it('should execute addCourse method', () => {
     component.addCourse();
-    expect (routerSpy.navigate).toHaveBeenCalledWith(['course-add']);
+    expect (routerSpy.navigate).toHaveBeenCalledWith(['courses/new']);
   });
 });

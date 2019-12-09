@@ -22,6 +22,6 @@ export class CourseSearchComponent implements OnInit {
   }
 
   public addCourse(): void{
-    this.router.navigate(['course-add']);
+    this.router.navigate(['courses/new']);
   }
 }

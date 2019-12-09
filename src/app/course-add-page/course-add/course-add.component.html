@@ -1,29 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-      <form>
-        <div class="form-group">
-          <label for="courseTitle">Title</label>
-          <input [(ngModel)]="item.title" name="title"  type="text" class="form-control" id="courseTitle">
-        </div>
-        <div class="form-group">
-          <label for="courseDescription">Description</label>
-          <textarea [(ngModel)]="item.description" name="description" class="form-control" id="courseDescription" rows="3"></textarea>
-        </div>
-        <gmp-course-add-date [date]="item.creationDate" (creationDateChange)="onDateChange($event)"></gmp-course-add-date>
-        <gmp-course-add-duration [duration]="item.duration" (durationChange)="onDurationChange($event)"></gmp-course-add-duration>
-        <gmp-course-add-author [authors]="item.authors" (authorsChange)="onAuthorsChange($event)"></gmp-course-add-author>
-        <div class="form-group">
-          <div class="form-check">
-            <input [(ngModel)]="item.topRated" name="topRated" class="form-check-input" type="checkbox" id="CourseTopRated">
-            <label class="form-check-label" for="topRated">Top Rated</label>
+<gmp-header></gmp-header>
+<gmp-breadcrumb [currentPage]="courseNav"></gmp-breadcrumb>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <form>
+          <div class="form-group">
+            <label for="courseTitle">Title</label>
+            <input [(ngModel)]="item.title" name="title"  type="text" class="form-control" id="courseTitle">
           </div>
-        </div>
-        <button (click)="create()" type="button" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-danger">Cancel</button>
-      </form>
+          <div class="form-group">
+            <label for="courseDescription">Description</label>
+            <textarea [(ngModel)]="item.description" name="description" class="form-control" id="courseDescription" rows="3"></textarea>
+          </div>
+          <gmp-course-add-date [date]="item.creationDate" (creationDateChange)="onDateChange($event)"></gmp-course-add-date>
+          <gmp-course-add-duration [duration]="item.duration" (durationChange)="onDurationChange($event)"></gmp-course-add-duration>
+          <gmp-course-add-author [authors]="item.authors" (authorsChange)="onAuthorsChange($event)"></gmp-course-add-author>
+          <div class="form-group">
+            <div class="form-check">
+              <input [(ngModel)]="item.topRated" name="topRated" class="form-check-input" type="checkbox" id="CourseTopRated">
+              <label class="form-check-label" for="topRated">Top Rated</label>
+            </div>
+          </div>
+          <button (click)="create()" type="button" class="btn btn-primary">Save</button>
+          <button (click)="cancel()" type="button" class="btn btn-danger">Cancel</button>
+        </form>
+      </div>
+      <div class="col-3"></div>
     </div>
-    <div class="col-3"></div>
   </div>
-</div>
+</main>

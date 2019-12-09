@@ -73,10 +73,17 @@ export class CourseService {
   }
 
   getCourseById(id: string): CourseItem {
-    return this.courseItems.filter((item: CourseItem) => item.id === id)[0];
+    const courseItem = this.courseItems.filter((item: CourseItem) => item.id === id)[0];
+    if(!courseItem) {
+      return null;
+    }
+    return courseItem;
   }
 
-  updateCourse(): void {}
+  updateCourse(courseItem: CourseItem): void {
+    this.removeCourse(courseItem.id);
+    this.courseItems.push(courseItem);
+  }
 
   removeCourse(id: string): void{
     this.courseItems = this.courseItems.filter((item: CourseItem) => item.id !== id);
