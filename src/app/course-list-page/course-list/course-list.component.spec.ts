@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { CourseListPageModule } from '../course-list-page.module';
+import { CoreModule } from '../../core/core.module';
 
 import { CourseListComponent } from './course-list.component';
 import { CourseListItemComponent } from '../course-list-item/course-list-item.component';
@@ -19,13 +19,12 @@ describe('CourseListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, PipesModule ],
+      imports: [ FormsModule, PipesModule, CoreModule ],
       declarations: [ 
         CourseListComponent, 
         CourseListItemComponent, 
         CourseSearchComponent,
-        CourseCardBorderDirective,
-        CourseListPageModule
+        CourseCardBorderDirective
       ],
       providers: [ {provide: Router, useValue: routerSpy} ]
     })

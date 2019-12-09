@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { CoreModule  } from '../../core/core.module';
 import { CourseAddComponent } from './course-add.component';
@@ -13,6 +13,13 @@ describe('CourseAddComponent', () => {
   let component: CourseAddComponent;
   let fixture: ComponentFixture<CourseAddComponent>;
   let routerSpy = {navigate: jasmine.createSpy('navigate')};
+  let activateSpy = {
+    snapshot: {
+      paramMap: {
+        get: jasmine.createSpy('get').and.returnValue('abcd5')
+      }
+    }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,7 +34,10 @@ describe('CourseAddComponent', () => {
         PipesModule,
         CoreModule
        ],
-       providers: [ {provide: Router, useValue: routerSpy} ]
+       providers: [ 
+         {provide: Router, useValue: routerSpy}, 
+         {provide: ActivatedRoute, useValue: activateSpy}
+       ]
     })
     .compileComponents();
   }));
@@ -68,6 +78,25 @@ describe('CourseAddComponent', () => {
       topRated: false
     };
     component.create();
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['courses']);
+  });
+
+  it('should execute create method with updated item', () => {
+    component.item = {
+      id: 'abcd5',
+      title: 'Course X2',
+      creationDate: '2019-11-20',
+      duration: 150,
+      description: 'Does your lorem ipsum text long for something a little meatier?',
+      authors: 'developer',
+      topRated: false
+    };
+    component.create();
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['courses']);
+  });
+
+  it('should execute cancel method', () => {
+    component.cancel();
     expect(routerSpy.navigate).toHaveBeenCalledWith(['courses']);
   });
 });
