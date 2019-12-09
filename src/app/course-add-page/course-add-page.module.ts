@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { CoreModule } from '../core/core.module';
+
 import { CourseAddComponent } from './course-add/course-add.component';
 import { CourseAddDateComponent } from './course-add-date/course-add-date.component';
 import { CourseAddDurationComponent } from './course-add-duration/course-add-duration.component';
@@ -18,7 +20,8 @@ import { PipesModule } from '../pipes/pipes.module';
   imports: [
     CommonModule,
     FormsModule,
-    PipesModule
+    PipesModule,
+    CoreModule
   ],
   exports: [
     FormsModule

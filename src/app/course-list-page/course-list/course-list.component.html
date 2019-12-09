@@ -1,7 +1,11 @@
-<div class="container">
-  <gmp-course-search (onSearchCourse)="onRootSearch($event)"></gmp-course-search>
-</div>
-<div class="container">
-  <span *ngIf="courseItems.length === 0" class="row text-center">NO COURSES TO SHOW ADD A NEW ONE</span>
-  <gmp-course-list-item (onDeleteCourse)="onRootDelete($event)" *ngFor="let item of (courseItems | courseSort)" [item]="item"></gmp-course-list-item>
-</div>
+<gmp-header></gmp-header>
+<gmp-breadcrumb></gmp-breadcrumb>
+<main>
+  <div class="container">
+    <gmp-course-search (onSearchCourse)="onRootSearch($event)"></gmp-course-search>
+  </div>
+  <div class="container">
+    <span *ngIf="courseItems.length === 0" class="row text-center">NO COURSES TO SHOW ADD A NEW ONE</span>
+    <gmp-course-list-item (onDeleteCourse)="onRootDelete($event)" *ngFor="let item of (courseItems | courseSort)" [item]="item"></gmp-course-list-item>
+  </div>
+</main>

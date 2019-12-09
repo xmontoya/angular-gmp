@@ -29,11 +29,13 @@ export class CourseAddComponent implements OnInit {
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
-    const courseItem = this.courseService.getCourseById(id);
-    if(courseItem) {
-      this.item = courseItem;
-    } else {
-      this.router.navigate(['404']);
+    if(id){
+      const courseItem = this.courseService.getCourseById(id);
+      if(courseItem) {
+        this.item = courseItem;
+      } else {
+        this.router.navigate(['404']);
+      }
     }
   }
 
