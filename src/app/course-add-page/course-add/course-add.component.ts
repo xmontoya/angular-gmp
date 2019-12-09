@@ -20,6 +20,8 @@ export class CourseAddComponent implements OnInit {
     authors: '',
     topRated: false
   };
+
+  courseNav = { url: '', title: ''};
   
   constructor(
     private courseService: CourseService, 
@@ -32,6 +34,8 @@ export class CourseAddComponent implements OnInit {
     if(id){
       const courseItem = this.courseService.getCourseById(id);
       if(courseItem) {
+        this.courseNav.url = '/courses/'+courseItem.id;
+        this.courseNav.title = courseItem.title;
         this.item = courseItem;
       } else {
         this.router.navigate(['404']);

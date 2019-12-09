@@ -1,6 +1,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-      <li class="breadcrumb-item" aria-current="page"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="/courses">Courses</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="#">Home</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="/courses">Courses</a></li>
+    <li *ngIf="currentPage.title" class="breadcrumb-item" aria-current="page"><a href="{{currentPage.url}}">{{currentPage.title}}</a></li>
   </ol>
 </nav>
