@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { CourseItem } from '../models/course-item-model';
 
 @Injectable({
@@ -8,63 +10,68 @@ export class CourseService {
   
   public courseItems: CourseItem[] = [];
 
-  constructor() { 
+  constructor(private httpClient: HttpClient) { 
     this.courseItems = [
       {
         id: 'abcd1',
-        title: 'Course 1',
-        creationDate: '2019-11-20',
-        duration: 150,
+        name: 'Course 1',
+        date: '2019-11-20',
+        length: 150,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: true
+        authors: [],
+        isTopRated: true
       },
       {
         id: 'abcd2',
-        title: 'course 2',
-        creationDate: '2019-11-10',
-        duration: 50,
+        name: 'course 2',
+        date: '2019-11-10',
+        length: 50,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: true
+        authors: [],
+        isTopRated: true
       },
       {
         id: 'abcd3',
-        title: 'Course 3',
-        creationDate: '2025-12-03',
-        duration: 80,
+        name: 'Course 3',
+        date: '2025-12-03',
+        length: 80,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: false
+        authors: [],
+        isTopRated: false
       }, {
         id: 'abcd4',
-        title: 'course 4',
-        creationDate: '2019-08-20',
-        duration: 98,
+        name: 'course 4',
+        date: '2019-08-20',
+        length: 98,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: true
+        authors: [],
+        isTopRated: true
       }, {
         id: 'abcd5',
-        title: 'Course 5',
-        creationDate: '2019-06-15',
-        duration: 150,
+        name: 'Course 5',
+        date: '2019-06-15',
+        length: 150,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: false
+        authors: [],
+        isTopRated: false
       }, {
         id: 'abcd6',
-        title: 'Course 6',
-        creationDate: '2019-12-03',
-        duration: 150,
+        name: 'Course 6',
+        date: '2019-12-03',
+        length: 150,
         description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: true
+        authors: [],
+        isTopRated: true
       }
     ];
   }
 
-  getList(): CourseItem[] {
+  getList(): any {
+    /*this.httpClient.get('http://localhost:3004/courses/')
+    .subscribe( {next: (items: any[]) => {
+      this.courseItems = items;
+      console.log(items);
+    }});*/
     return this.courseItems;
   }
 

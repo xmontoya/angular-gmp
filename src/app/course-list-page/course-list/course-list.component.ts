@@ -16,6 +16,7 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit() {
     this.courseItemsInit = this.courseService.getList();
+    console.log(this.courseItemsInit);
     this.courseItems = this.courseItemsInit;
   }
 
@@ -27,7 +28,7 @@ export class CourseListComponent implements OnInit {
 
   public onRootSearch(title: string): void {
     if(title){
-      this.courseItems = this.courseItemsInit.filter((item: CourseItem) => !item.title.toLowerCase().search(title.toLowerCase()));
+      this.courseItems = this.courseItemsInit.filter((item: CourseItem) => !item.name.toLowerCase().search(title.toLowerCase()));
     } 
   }
 

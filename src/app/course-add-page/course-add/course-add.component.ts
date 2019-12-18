@@ -13,12 +13,12 @@ import { CourseService } from '../../services/course.service';
 export class CourseAddComponent implements OnInit {
   @Input() item: CourseItem = {
     id: '',
-    title: '',
-    creationDate: '',
-    duration: 0,
+    name: '',
+    date: '',
+    length: 0,
     description: '',
-    authors: '',
-    topRated: false
+    authors: [],
+    isTopRated: false
   };
 
   courseNav = { url: '', title: ''};
@@ -35,7 +35,7 @@ export class CourseAddComponent implements OnInit {
       const courseItem = this.courseService.getCourseById(id);
       if(courseItem) {
         this.courseNav.url = '/courses/'+courseItem.id;
-        this.courseNav.title = courseItem.title;
+        this.courseNav.title = courseItem.name;
         this.item = courseItem;
       } else {
         this.router.navigate(['404']);
@@ -59,14 +59,14 @@ export class CourseAddComponent implements OnInit {
   }
 
   public onDurationChange(duration: number): void {
-    this.item.duration = duration;
+    this.item.length = duration;
   }
 
   public onDateChange(creationDate: string): void {
-    this.item.creationDate = creationDate;
+    this.item.date = creationDate;
   }
 
-  public onAuthorsChange(authors: string): void {
+  public onAuthorsChange(authors: []): void {
     this.item.authors = authors;
   }
 
