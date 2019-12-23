@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { CourseItem } from '../models/course-item-model';
 
@@ -9,9 +10,10 @@ import { CourseItem } from '../models/course-item-model';
 export class CourseService {
   
   public courseItems: CourseItem[] = [];
+  public coursesUrl: string = 'http://localhost:3004/courses/';
 
   constructor(private httpClient: HttpClient) { 
-    this.courseItems = [
+    /*this.courseItems = [
       {
         id: 'abcd1',
         name: 'Course 1',
@@ -63,37 +65,27 @@ export class CourseService {
         authors: [],
         isTopRated: true
       }
-    ];
+    ];*/
   }
 
-  getList(): any {
-    /*this.httpClient.get('http://localhost:3004/courses/')
-    .subscribe( {next: (items: any[]) => {
-      this.courseItems = items;
-      console.log(items);
-    }});*/
-    return this.courseItems;
+  getList(): Observable<CourseItem[]> {
+    return this.httpClient.get<CourseItem[]>(this.coursesUrl)
   }
 
-  createCourse(courseItem: CourseItem): void {
-    this.courseItems.push(courseItem);
+  createCourse(courseItem: CourseItem): Observable<CourseItem> {
+    return this.httpClient.post<CourseItem>(this.coursesUrl, courseItem);
   }
 
-  getCourseById(id: string): CourseItem {
-    const courseItem = this.courseItems.filter((item: CourseItem) => item.id === id)[0];
-    if(!courseItem) {
-      return null;
-    }
-    return courseItem;
+  getCourseById(id: string): Observable<CourseItem> {
+    return this.httpClient.get<CourseItem>(this.coursesUrl+id);
   }
 
-  updateCourse(courseItem: CourseItem): void {
-    this.removeCourse(courseItem.id);
-    this.courseItems.push(courseItem);
+  updateCourse(courseItem: CourseItem):  Observable<CourseItem> {
+    return this.httpClient.patch<CourseItem>(this.coursesUrl+courseItem.id, courseItem);
   }
 
-  removeCourse(id: string): void{
-    this.courseItems = this.courseItems.filter((item: CourseItem) => item.id !== id);
+  removeCourse(id: number): any {
+    return this.httpClient.delete<CourseItem>(this.coursesUrl+id);
   }
 
 }

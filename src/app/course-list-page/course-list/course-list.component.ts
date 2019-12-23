@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { CourseItem } from '../../models/course-item-model';
 import { CourseService } from '../../services/course.service';
 
@@ -15,20 +17,28 @@ export class CourseListComponent implements OnInit {
   constructor(private courseService: CourseService) { }
 
   ngOnInit() {
-    this.courseItemsInit = this.courseService.getList();
-    console.log(this.courseItemsInit);
-    this.courseItems = this.courseItemsInit;
+    this.getCourses();
   }
 
-  public onRootDelete(id: string): void {
-    this.courseService.removeCourse(id);
-    this.courseItemsInit = this.courseService.getList();
-    this.courseItems = this.courseItemsInit;
+  private getCourses(): void {
+    this.courseService.getList()
+      .subscribe(courses => {
+        this.courseItemsInit = courses;
+        this.courseItems = this.courseItemsInit;
+        console.log(courses);
+      });
+  }
+
+  public onRootDelete(id: number): void {
+    this.courseService.removeCourse(id)
+      .subscribe( () => {
+        this.getCourses();
+      });
   }
 
   public onRootSearch(title: string): void {
     if(title){
-      this.courseItems = this.courseItemsInit.filter((item: CourseItem) => !item.name.toLowerCase().search(title.toLowerCase()));
+      //this.courseItems = [];//this.courseItemsInit.filter((item: CourseItem) => !item.name.toLowerCase().search(title.toLowerCase()));
     } 
   }
 

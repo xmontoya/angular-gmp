@@ -12,7 +12,7 @@ import { CourseService } from '../../services/course.service';
 })
 export class CourseAddComponent implements OnInit {
   @Input() item: CourseItem = {
-    id: '',
+    id: 0,
     name: '',
     date: '',
     length: 0,
@@ -32,26 +32,35 @@ export class CourseAddComponent implements OnInit {
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     if(id){
-      const courseItem = this.courseService.getCourseById(id);
-      if(courseItem) {
-        this.courseNav.url = '/courses/'+courseItem.id;
-        this.courseNav.title = courseItem.name;
-        this.item = courseItem;
-      } else {
-        this.router.navigate(['404']);
-      }
+      this.getCourse(id);
     }
+  }
+
+  private getCourse(id: string): void {
+    this.courseService.getCourseById(id)
+      .subscribe(course => {
+        if(course.id) {
+          this.item = course;
+          this.courseNav.url = '/courses/'+this.item.id;
+          this.courseNav.title = this.item.name;
+        } else {
+          this.router.navigate(['404']);
+        }
+      });
   }
 
   public create(): void{
     if(this.item.id){
-      this.courseService.updateCourse(this.item);
+      this.courseService.updateCourse(this.item)
+      .subscribe(() => {
+        this.router.navigate(['courses']);
+      });
     } else {
-      const itemId = uuid();
-      this.item.id = itemId;
-      this.courseService.createCourse(this.item);
+      this.courseService.createCourse(this.item)
+      .subscribe(course => {
+        this.router.navigate(['courses']);
+      });
     }
-    this.router.navigate(['courses']);
   }
 
   public cancel(): void{
