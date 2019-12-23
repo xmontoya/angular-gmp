@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   title = 'Angular GMP';
-  userInfo = { user: '' };
+  userInfo = { login: '' };
   isAuthenticated: boolean = false;
   
   constructor(private authService: AuthService, private router: Router) {
@@ -19,7 +19,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.isAuthenticated = this.authService.isAuthenticated();
     if( this.isAuthenticated ){
-      this.userInfo = this.authService.getUserInfo();
+      this.authService.getUserInfo()
+        .subscribe(response => {
+          this.userInfo.login = response.login;
+      });
     }
   }
 

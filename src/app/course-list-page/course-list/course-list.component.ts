@@ -25,7 +25,6 @@ export class CourseListComponent implements OnInit {
       .subscribe(courses => {
         this.courseItemsInit = courses;
         this.courseItems = this.courseItemsInit;
-        console.log(courses);
       });
   }
 
