@@ -21,7 +21,7 @@ export class CourseListComponent implements OnInit {
   }
 
   private getCourses(): void {
-    this.courseService.getList()
+    this.courseService.getList('')
       .subscribe(courses => {
         this.courseItemsInit = courses;
         this.courseItems = this.courseItemsInit;
@@ -37,8 +37,11 @@ export class CourseListComponent implements OnInit {
 
   public onRootSearch(title: string): void {
     if(title){
-      //this.courseItems = [];//this.courseItemsInit.filter((item: CourseItem) => !item.name.toLowerCase().search(title.toLowerCase()));
+      this.courseService.getList(title)
+      .subscribe(courses => {
+        this.courseItemsInit = courses;
+        this.courseItems = this.courseItemsInit;
+      });
     } 
   }
-
 }

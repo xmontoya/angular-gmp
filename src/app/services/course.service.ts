@@ -14,8 +14,8 @@ export class CourseService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getList(): Observable<CourseItem[]> {
-    return this.httpClient.get<CourseItem[]>(this.coursesUrl)
+  getList(text: string): Observable<CourseItem[]> {
+    return this.httpClient.get<CourseItem[]>(this.coursesUrl, {params: {textFragment: text}})
   }
 
   createCourse(courseItem: CourseItem): Observable<CourseItem> {
