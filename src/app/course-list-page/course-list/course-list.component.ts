@@ -21,7 +21,8 @@ export class CourseListComponent implements OnInit {
   }
 
   private getCourses(): void {
-    this.courseService.getList('')
+    const count = this.courseItems.length + 5;
+    this.courseService.getList({start:0, count: count})
       .subscribe(courses => {
         this.courseItemsInit = courses;
         this.courseItems = this.courseItemsInit;
@@ -37,7 +38,7 @@ export class CourseListComponent implements OnInit {
 
   public onRootSearch(title: string): void {
     if(title){
-      this.courseService.getList(title)
+      this.courseService.getList({textFragment: title})
       .subscribe(courses => {
         this.courseItemsInit = courses;
         this.courseItems = this.courseItemsInit;

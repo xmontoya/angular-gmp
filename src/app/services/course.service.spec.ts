@@ -116,7 +116,7 @@ describe('CourseService', () => {
       },
   ];
 
-    service.getList()
+    service.getList({})
         .subscribe(courseData => {
           expect(courseData.length).toEqual(2);
         });
