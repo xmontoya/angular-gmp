@@ -44,27 +44,27 @@ describe('CourseListComponent', () => {
   it('should execute onRootDelete method', () => {
     const courseList = new CourseListComponent(new CourseService() );
     courseList.courseItems = [{
-      id: 'abcd1',
-      title: 'Course test',
-      creationDate: '2019-10-20',
-      duration: 150,
+      id: 45,
+      name: 'Course test',
+      date: '2019-10-20',
+      length: 150,
       description: 'Course test',
-      authors: 'xmontoya',
-      topRated: true
+      authors: [],
+      isTopRated: true
     }];
-    expect(courseList.onRootDelete('abcd1')).toEqual();
+    expect(courseList.onRootDelete(45)).toEqual();
   });
 
   it('should execute onRootSearch method', () => {
     const courseList = new CourseListComponent(new CourseService() );
     courseList.courseItems = [{
-      id: 'abcd1',
-      title: 'Course test',
-      creationDate: '2019-10-20',
-      duration: 150,
+      id: 45,
+      name: 'Course test',
+      date: '2019-10-20',
+      length: 150,
       description: 'Course test',
-      authors: 'xmontoya',
-      topRated: true
+      authors: [],
+      isTopRated: true
     }];
     courseList.courseItemsInit = courseList.courseItems;
     expect(courseList.onRootSearch('Course')).toEqual();

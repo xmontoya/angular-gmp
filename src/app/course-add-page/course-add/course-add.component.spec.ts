@@ -54,28 +54,28 @@ describe('CourseAddComponent', () => {
 
   it('should execute onDurationChange method', () => {
     component.onDurationChange(123)
-    expect(component.item.duration).toEqual(123);
+    expect(component.item.length).toEqual(123);
   });
 
   it('should execute onDateChange method', () => {
     component.onDateChange('2020-01-03')
-    expect(component.item.creationDate).toEqual('2020-01-03');
+    expect(component.item.date).toEqual('2020-01-03');
   });
 
   it('should execute onAuthorsChange method', () => {
-    component.onAuthorsChange('developer')
-    expect(component.item.authors).toEqual('developer');
+    component.onAuthorsChange([])
+    expect(component.item.authors).toEqual([]);
   });
 
   it('should execute create method', () => {
     component.item = {
-      id: '',
-      title: 'Course X',
-      creationDate: '2019-11-20',
-      duration: 150,
+      id: 0,
+      name: 'Course X2',
+      date: '2019-11-20',
+      length: 150,
       description: 'Does your lorem ipsum text long for something a little meatier?',
-      authors: 'developer',
-      topRated: false
+      authors: [],
+      isTopRated: false
     };
     component.create();
     expect(routerSpy.navigate).toHaveBeenCalledWith(['courses']);
@@ -83,13 +83,13 @@ describe('CourseAddComponent', () => {
 
   it('should execute create method with updated item', () => {
     component.item = {
-      id: 'abcd5',
-      title: 'Course X2',
-      creationDate: '2019-11-20',
-      duration: 150,
+      id: 56,
+      name: 'Course X2',
+      date: '2019-11-20',
+      length: 150,
       description: 'Does your lorem ipsum text long for something a little meatier?',
-      authors: 'developer',
-      topRated: false
+      authors: [],
+      isTopRated: false
     };
     component.create();
     expect(routerSpy.navigate).toHaveBeenCalledWith(['courses']);

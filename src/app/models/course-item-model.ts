@@ -4,6 +4,6 @@ export interface CourseItem {
   date: string,
   length: number,
   description: string,
-  authors: [],
+  authors: any,
   isTopRated: boolean
 }
