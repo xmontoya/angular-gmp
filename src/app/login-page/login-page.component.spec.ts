@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { CoreModule  } from '../core/core.module';
 
@@ -19,13 +20,14 @@ class RouterMock {
 }
 
 describe('LoginPageComponent', () => {
+  let httpTestingController: HttpTestingController;
   let component: LoginPageComponent;
   let fixture: ComponentFixture<LoginPageComponent>;
   let routerSpy = {navigate: jasmine.createSpy('navigate')};
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, CoreModule ],
+      imports: [ FormsModule, CoreModule, HttpClientTestingModule ],
       declarations: [ LoginPageComponent ],
       providers: [ {provide: Router, useValue: routerSpy} ]
     })
@@ -33,6 +35,7 @@ describe('LoginPageComponent', () => {
   }));
 
   beforeEach(() => {
+    httpTestingController = TestBed.get(HttpTestingController);
     fixture = TestBed.createComponent(LoginPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -43,7 +46,6 @@ describe('LoginPageComponent', () => {
   });
 
   it('should execute login method', () => {
-    component.login();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['courses']);
+    expect(component.login()).toEqual();
   });
 });

@@ -1,5 +1,6 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { AuthGuard } from './auth.guard';
 import { AuthService } from '../services/auth.service';
@@ -18,14 +19,18 @@ describe('AuthGuard', () => {
     parseUrl: jasmine.createSpy('parseUrl')
   };
   const routerMock = jasmine.createSpyObj('Router', ['navigate', 'parseUrl']);
+  let httpTestingController: HttpTestingController;
   let authGuard: AuthGuard;
-  let authService: AuthMock;
+  let authService: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthGuard, {provide: Router, useValue: routerMock} ]
+      providers: [AuthGuard, {provide: Router, useValue: routerMock} ],
+      imports: [HttpClientTestingModule]
     });
-    authService = new AuthMock();
+
+    httpTestingController = TestBed.get(HttpTestingController);
+    authService = TestBed.get(AuthService);
     authGuard = new AuthGuard(authService, routerMock);
   });
 

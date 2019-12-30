@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { CoreModule  } from '../../core/core.module';
 import { CourseAddComponent } from './course-add.component';
@@ -10,6 +11,7 @@ import { CourseAddAuthorComponent } from '../course-add-author/course-add-author
 import { PipesModule } from '../../pipes/pipes.module';
 
 describe('CourseAddComponent', () => {
+  let httpTestingController: HttpTestingController;
   let component: CourseAddComponent;
   let fixture: ComponentFixture<CourseAddComponent>;
   let routerSpy = {navigate: jasmine.createSpy('navigate')};
@@ -32,7 +34,8 @@ describe('CourseAddComponent', () => {
        imports: [
         FormsModule, 
         PipesModule,
-        CoreModule
+        CoreModule,
+        HttpClientTestingModule
        ],
        providers: [ 
          {provide: Router, useValue: routerSpy}, 
@@ -53,17 +56,17 @@ describe('CourseAddComponent', () => {
   });
 
   it('should execute onDurationChange method', () => {
-    component.onDurationChange(123)
+    component.onDurationChange(123);
     expect(component.item.length).toEqual(123);
   });
 
   it('should execute onDateChange method', () => {
-    component.onDateChange('2020-01-03')
+    component.onDateChange('2020-01-03');
     expect(component.item.date).toEqual('2020-01-03');
   });
 
   it('should execute onAuthorsChange method', () => {
-    component.onAuthorsChange([])
+    component.onAuthorsChange([]);
     expect(component.item.authors).toEqual([]);
   });
 
