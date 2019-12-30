@@ -6,6 +6,18 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { CoreModule  } from '../core/core.module';
 
 import { LoginPageComponent } from './login-page.component';
+import { AuthService } from '../services/auth.service';
+import { of } from 'rxjs';
+
+let authServiceStub: Partial<AuthService>;
+
+authServiceStub = {
+  isAuth: false,
+  login: (user: string, pass: string) => of({token: '58ebfdf7f1f558c5c86e17f6'}),
+  logout: () =>true,
+  isAuthenticated: () => true,
+  getUserInfo: () => of({login: 'user'})
+};
 
 class RouterMock {
   navigateByUrl(url: string) {
@@ -29,7 +41,9 @@ describe('LoginPageComponent', () => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, CoreModule, HttpClientTestingModule ],
       declarations: [ LoginPageComponent ],
-      providers: [ {provide: Router, useValue: routerSpy} ]
+      providers: [ 
+        {provide: Router, useValue: routerSpy},
+        {provide: AuthService, useValue: authServiceStub} ]
     })
     .compileComponents();
   }));

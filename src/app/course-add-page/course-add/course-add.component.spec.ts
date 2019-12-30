@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { of } from 'rxjs';
 
 import { CoreModule  } from '../../core/core.module';
 import { CourseAddComponent } from './course-add.component';
@@ -9,6 +10,28 @@ import { CourseAddDateComponent } from '../course-add-date/course-add-date.compo
 import { CourseAddDurationComponent } from '../course-add-duration/course-add-duration.component';
 import { CourseAddAuthorComponent } from '../course-add-author/course-add-author.component';
 import { PipesModule } from '../../pipes/pipes.module';
+import { CourseService } from 'src/app/services/course.service';
+import { CourseItem } from '../../models/course-item-model';
+
+let courseServiceStub: Partial<CourseService>;
+
+const courseItemMock: CourseItem = {
+  id: 23,
+  name: 'Course X2',
+  date: '2019-11-20',
+  length: 150,
+  description: 'Does your lorem ipsum text long for something a little meatier?',
+  authors: [],
+  isTopRated: false
+};
+
+courseServiceStub = {
+  getList: () => { return of([courseItemMock]) },
+  createCourse: (courseItem) => of(courseItemMock),
+  getCourseById: (id) => of(courseItemMock),
+  updateCourse: (courseItem) => of(courseItemMock),
+  removeCourse: (id) => of({})
+};
 
 describe('CourseAddComponent', () => {
   let httpTestingController: HttpTestingController;
@@ -39,7 +62,8 @@ describe('CourseAddComponent', () => {
        ],
        providers: [ 
          {provide: Router, useValue: routerSpy}, 
-         {provide: ActivatedRoute, useValue: activateSpy}
+         {provide: ActivatedRoute, useValue: activateSpy},
+         {provide: CourseService, useValue: courseServiceStub}
        ]
     })
     .compileComponents();
@@ -71,6 +95,7 @@ describe('CourseAddComponent', () => {
   });
 
   it('should execute create method', () => {
+    localStorage.setItem('angularGMPToken', '58ebfdf7f1f558c5c86e17f6');
     component.item = {
       id: 0,
       name: 'Course X2',
@@ -85,6 +110,7 @@ describe('CourseAddComponent', () => {
   });
 
   it('should execute create method with updated item', () => {
+    localStorage.setItem('angularGMPToken', '58ebfdf7f1f558c5c86e17f6');
     component.item = {
       id: 56,
       name: 'Course X2',

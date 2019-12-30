@@ -41,6 +41,7 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
+
   it(`should have as title 'Angular GMP'`, () => {
     expect(component.title).toEqual('Angular GMP');
   });
