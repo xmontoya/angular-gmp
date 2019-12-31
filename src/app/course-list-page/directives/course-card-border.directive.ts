@@ -5,13 +5,13 @@ import { Directive, OnInit, ElementRef, Renderer2, Input } from '@angular/core';
 })
 export class CourseCardBorderDirective implements OnInit {
 
-  @Input('gmpCourseCardBorder') public creationDate: string;
+  @Input('gmpCourseCardBorder') public date: string;
 
   constructor( private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
     const currentDate = new Date();
-    const courseDate = new Date(this.creationDate);
+    const courseDate = new Date(this.date);
     
     if(courseDate.getTime() < currentDate.getTime() && courseDate.getTime() >= (currentDate.getTime() - + ( 3600 * 1000 * 24 * 14))){
       this.renderer.setStyle(this.el.nativeElement, 'border-color', 'green');

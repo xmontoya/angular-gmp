@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-
-import { CoreModule  } from '../core.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { PageNotFoundComponent } from './page-not-found.component';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
@@ -15,7 +14,8 @@ describe('PageNotFoundComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PageNotFoundComponent, BreadcrumbComponent, HeaderComponent],
-      providers: [ {provide: Router, useValue: routerSpy} ]
+      providers: [ {provide: Router, useValue: routerSpy} ],
+      imports: [ HttpClientTestingModule ]
     })
     .compileComponents();
   }));

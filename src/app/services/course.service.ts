@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { CourseItem } from '../models/course-item-model';
 
 @Injectable({
@@ -7,86 +10,28 @@ import { CourseItem } from '../models/course-item-model';
 export class CourseService {
   
   public courseItems: CourseItem[] = [];
+  public coursesUrl: string = 'http://localhost:3004/courses/';
 
-  constructor() { 
-    this.courseItems = [
-      {
-        id: 'abcd1',
-        title: 'Course 1',
-        creationDate: '2019-11-20',
-        duration: 150,
-        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: true
-      },
-      {
-        id: 'abcd2',
-        title: 'course 2',
-        creationDate: '2019-11-10',
-        duration: 50,
-        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: true
-      },
-      {
-        id: 'abcd3',
-        title: 'Course 3',
-        creationDate: '2025-12-03',
-        duration: 80,
-        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: false
-      }, {
-        id: 'abcd4',
-        title: 'course 4',
-        creationDate: '2019-08-20',
-        duration: 98,
-        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: true
-      }, {
-        id: 'abcd5',
-        title: 'Course 5',
-        creationDate: '2019-06-15',
-        duration: 150,
-        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: false
-      }, {
-        id: 'abcd6',
-        title: 'Course 6',
-        creationDate: '2019-12-03',
-        duration: 150,
-        description: 'Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!',
-        authors: 'xmontoya',
-        topRated: true
-      }
-    ];
+  constructor(private httpClient: HttpClient) { }
+
+  getList(filters: any): Observable<CourseItem[]> {
+    return this.httpClient.get<CourseItem[]>(this.coursesUrl, {params: filters})
   }
 
-  getList(): CourseItem[] {
-    return this.courseItems;
+  createCourse(courseItem: CourseItem): Observable<CourseItem> {
+    return this.httpClient.post<CourseItem>(this.coursesUrl, courseItem);
   }
 
-  createCourse(courseItem: CourseItem): void {
-    this.courseItems.push(courseItem);
+  getCourseById(id: string): Observable<CourseItem> {
+    return this.httpClient.get<CourseItem>(this.coursesUrl+id);
   }
 
-  getCourseById(id: string): CourseItem {
-    const courseItem = this.courseItems.filter((item: CourseItem) => item.id === id)[0];
-    if(!courseItem) {
-      return null;
-    }
-    return courseItem;
+  updateCourse(courseItem: CourseItem):  Observable<CourseItem> {
+    return this.httpClient.patch<CourseItem>(this.coursesUrl+courseItem.id, courseItem);
   }
 
-  updateCourse(courseItem: CourseItem): void {
-    this.removeCourse(courseItem.id);
-    this.courseItems.push(courseItem);
-  }
-
-  removeCourse(id: string): void{
-    this.courseItems = this.courseItems.filter((item: CourseItem) => item.id !== id);
+  removeCourse(id: number): any {
+    return this.httpClient.delete<CourseItem>(this.coursesUrl+id);
   }
 
 }

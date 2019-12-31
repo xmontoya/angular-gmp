@@ -7,5 +7,8 @@
   <div class="container">
     <span *ngIf="courseItems.length === 0" class="row text-center">NO COURSES TO SHOW ADD A NEW ONE</span>
     <gmp-course-list-item (onDeleteCourse)="onRootDelete($event)" *ngFor="let item of (courseItems | courseSort)" [item]="item"></gmp-course-list-item>
+      <div *ngIf="courseItems.length > 0" class="btn-group" role="group" aria-label="Basic example">
+        <button (click)="getCourses()" type="button" class="btn btn-outline-primary">Load More</button>
+      </div>
   </div>
 </main>

@@ -1,14 +1,14 @@
-<div class="card" [gmpCourseCardBorder]="item.creationDate" style="margin-bottom: 15px;">
+<div class="card" [gmpCourseCardBorder]="item.date" style="margin-bottom: 15px;">
     <div class="card-title">
       <div class="row">
         <div class="col-6">
-          <h5>{{ item.title | uppercase }} <i [ngClass]="{'far fa-star text-warning':item.topRated===true}"></i></h5>
+          <h5>{{ item.name | uppercase }} <i [ngClass]="{'far fa-star text-warning':item.isTopRated===true}"></i></h5>
         </div>
         <div class="col-3">
-          <span class="text-center text-muted"><i class="far fa-clock"></i> {{ item.duration | courseDuration }}</span>
+          <span class="text-center text-muted"><i class="far fa-clock"></i> {{ item.length | courseDuration }}</span>
         </div>
         <div class="col-3">
-          <span class="text-center text-muted"><i class="far fa-calendar"></i> {{ item.creationDate | date }}</span>
+          <span class="text-center text-muted"><i class="far fa-calendar"></i> {{ item.date | date }}</span>
         </div>
       </div>
     </div>

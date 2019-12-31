@@ -19,7 +19,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   public login(): void{
-    this.authService.login(this.loginUser, this.loginPassword);
-    this.router.navigate(['courses']);  
+    this.authService.login(this.loginUser, this.loginPassword)
+    .subscribe(response => {
+      localStorage.setItem('angularGMPToken', response.token);
+      this.router.navigate(['courses']);
+    });
   }
 }

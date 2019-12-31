@@ -13,13 +13,13 @@ describe('CourseListItemComponent', () => {
   let routerSpy = {navigate: jasmine.createSpy('navigate')};
 
   const item = {
-    id: 'abcd1',
-    title: 'Course test',
-    creationDate: '2019-10-20',
-    duration: 150,
+    id: 56,
+    name: 'Course test',
+    date: '2019-10-20',
+    length: 150,
     description: 'Course test',
     authors: 'xmontoya',
-    topRated: true
+    isTopRated: true
   };
 
   beforeEach(async(() => {

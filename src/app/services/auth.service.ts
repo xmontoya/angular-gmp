@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -6,17 +7,12 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   isAuth: boolean = false;
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     this.isAuth = localStorage.getItem('angularGMPToken') ? true : false;
-   }
+  }
 
-  login(user: string, pass: string): boolean {
-    if( !localStorage.getItem('angularGMPToken') ) {
-      localStorage.setItem('angularGMPUserInfo', JSON.stringify({ user: user }));  
-      localStorage.setItem('angularGMPToken', 'AGMPT-123456');
-    }
-
-    return this.isAuth = localStorage.getItem('angularGMPToken') ? true : false; 
+  login(user: string, pass: string): any {
+    return this.httpClient.post('http://localhost:3004/auth/login', { login: user, password: pass});
   }
 
   logout(): boolean {
@@ -27,10 +23,10 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return this.isAuth;
+    return this.isAuth = localStorage.getItem('angularGMPToken') ? true : false;
   }
 
   getUserInfo(): any {
-    return JSON.parse(localStorage.getItem('angularGMPUserInfo'));
+    return this.httpClient.post('http://localhost:3004/auth/userinfo', { token: localStorage.getItem('angularGMPToken') });
   }
 }

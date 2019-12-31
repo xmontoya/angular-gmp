@@ -13,7 +13,7 @@ import { CourseModalConfirmComponent } from '../course-modal-confirm/course-moda
 export class CourseListItemComponent implements OnInit {
   @Input() item: CourseItem;
 
-  @Output('onDeleteCourse') onDelete: EventEmitter<string> = new EventEmitter<string>();
+  @Output('onDeleteCourse') onDelete: EventEmitter<number> = new EventEmitter<number>();
   
   constructor(private _modalService: NgbModal, private router: Router) { }
 
